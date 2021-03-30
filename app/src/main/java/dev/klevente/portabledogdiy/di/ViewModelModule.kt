@@ -6,6 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import dev.klevente.portabledogdiy.ui.detail.DetailViewModel
+import dev.klevente.portabledogdiy.ui.edit.EditViewModel
 import dev.klevente.portabledogdiy.ui.list.ListViewModel
 
 @Suppress("unused")
@@ -21,4 +22,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditViewModel::class)
+    abstract fun bindEditViewModel(editViewModel: EditViewModel): ViewModel
 }
