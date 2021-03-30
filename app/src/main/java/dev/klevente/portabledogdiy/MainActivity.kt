@@ -1,6 +1,5 @@
 package dev.klevente.portabledogdiy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import co.zsmb.rainbowcake.navigation.SimpleNavActivity
 import dev.klevente.portabledogdiy.ui.list.ListFragment

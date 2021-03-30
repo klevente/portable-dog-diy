@@ -5,6 +5,6 @@ import javax.inject.Singleton
 
 @Singleton
 class DiskDataSource @Inject constructor(
-        private val beerDao: BeerDao,
+    private val beerDao: BeerDao,
 ) {
 }

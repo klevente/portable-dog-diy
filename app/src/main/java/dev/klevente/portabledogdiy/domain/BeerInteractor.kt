@@ -5,8 +5,8 @@ import dev.klevente.portabledogdiy.data.network.NetworkDataSource
 import javax.inject.Inject
 
 class BeerInteractor @Inject constructor(
-        private val networkDataSource: NetworkDataSource,
-        private val diskDataSource: DiskDataSource,
+    private val networkDataSource: NetworkDataSource,
+    private val diskDataSource: DiskDataSource,
 ) {
-    
+
 }

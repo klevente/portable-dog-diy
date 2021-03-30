@@ -5,6 +5,6 @@ import javax.inject.Singleton
 
 @Singleton
 class NetworkDataSource @Inject constructor(
-        private val punkApi: PunkApi,
+    private val punkApi: PunkApi,
 ) {
 }
