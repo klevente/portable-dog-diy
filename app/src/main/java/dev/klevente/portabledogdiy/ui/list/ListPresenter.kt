@@ -6,4 +6,7 @@ import javax.inject.Inject
 class ListPresenter @Inject constructor(
     private val beerInteractor: BeerInteractor,
 ) {
+    suspend fun loadBeers() {
+        TODO("Not yet implemented")
+    }
 }

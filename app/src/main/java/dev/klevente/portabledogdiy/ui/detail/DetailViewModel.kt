@@ -7,4 +7,9 @@ class DetailViewModel @Inject constructor(
     private val detailPresenter: DetailPresenter,
 ) : RainbowCakeViewModel<DetailViewState>(Loading) {
 
+    // Define business events here
+    // object SampleEvent : OneShotEvent
+
+    // Define UI event handlers here
+    // fun doStuff() = execute { ... }
 }

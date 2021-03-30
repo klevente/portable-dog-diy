@@ -8,5 +8,23 @@ class BeerInteractor @Inject constructor(
     private val networkDataSource: NetworkDataSource,
     private val diskDataSource: DiskDataSource,
 ) {
+    suspend fun getBeers() {
+        TODO("Not yet implemented")
+    }
 
+    suspend fun getBeerById(id: String) {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun addBeer() {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun updateBeer() {
+        TODO("Not yet implemented")
+    }
+
+    suspend fun deleteBeer() {
+        TODO("Not yet implemented")
+    }
 }

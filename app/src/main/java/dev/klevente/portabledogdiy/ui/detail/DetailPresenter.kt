@@ -6,5 +6,11 @@ import javax.inject.Inject
 class DetailPresenter @Inject constructor(
     private val beerInteractor: BeerInteractor,
 ) {
+    suspend fun loadBeer(id: String) {
+        TODO("Not yet implemented")
+    }
 
+    suspend fun deleteBeer() {
+        TODO("Not yet implemented")
+    }
 }
