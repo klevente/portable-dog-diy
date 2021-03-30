@@ -21,6 +21,8 @@ RainbowCake provides support for 2 DI frameworks at this time: Koin and Dagger 2
 
 I was also contemplating using Hilt for this application, however, as of now, RainbowCake does not support it officially, so I decided to be on the safe side and use a supported library - altough the author has plans to support it in the future, in which case, I am sure that migraition will be very easy.
 
+<div style="page-break-after: always;"></div>
+
 ## Github Flow
 
 For development, I followed the usual Git flow that we learned during this course. For this, a `dev` and a feature branch named `feat/arch` was created, where most of the work was done. When finished, `feat/arch` was merged into `dev`, then after the final polishes, `dev` was merged into `main`. As these merges were of the fast-forward type, these branches do not appear individually, though this might change in the future. This documentation was created on the `main` branch. Below is a screenshot of the commits leading up to the moment of writing.
