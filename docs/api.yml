@@ -1,0 +1,274 @@
+openapi: "3.0.2"
+info:
+  title: Punk API
+  version: "2.0"
+servers:
+  - url: https://api.punkapi.com/v2/
+tags:
+  - name: "beer"
+    description: "Operations related to beers"
+paths:
+  /beers:
+    post:
+      tags:
+        - "beer"
+      summary: "Add a new beer"
+      operationId: "addBeer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BeerAddRequest"
+      responses:
+        "200":
+          description: "Successful addition"
+        "400":
+          description: "Invalid request"
+    get:
+      tags:
+        - "beer"
+      summary: "Get all beers"
+      operationId: "getBeers"
+      responses:
+        "200":
+          description: "Successful request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BeersResponse"
+  /beers/{id}:
+    get:
+      tags:
+        - "beer"
+      summary: "Get beer with specified ID"
+      operationId: "getBeerById"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "Successful request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BeerResponse"
+        "400":
+          description: "Invalid ID format"
+        "404":
+          description: "Beer not found"
+    put:
+      tags:
+        - "beer"
+      summary: "Update beer with specified ID"
+      operationId: "updateBeer"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BeerAddRequest"
+      responses:
+        "200":
+          description: "Successful update"
+        "400":
+          description: "Invalid request"
+        "404":
+          description: "Beer not found"
+    delete:
+      tags:
+        - "beer"
+      summary: "Delete beer with specified ID"
+      operationId: "deleteBeer"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "Successful delete"
+        "400":
+          description: "Invalid ID format"
+        "404":
+          description: "Beer not found"
+
+components:
+  schemas:
+    BeerAddRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        tagline:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        abv:
+          type: number
+          format: double
+        ibu:
+          type: integer
+        target_fg:
+          type: integer
+        target_og:
+          type: integer
+        volume:
+          $ref: "#/components/schemas/Volume"
+        boil_volume:
+          $ref: "#/components/schemas/Volume"
+        method:
+          type: object
+          properties:
+            mash_temp:
+              type: array
+              items:
+                $ref: "#/components/schemas/Mash"
+            fermentation:
+              type: object
+              properties:
+                temp:
+                  $ref: "#/components/schemas/Temperature"
+        ingredients:
+          type: object
+          properties:  
+            malt:
+              type: array
+              items:
+                $ref: "#/components/schemas/Malt"
+            hops:
+              type: array
+              items:
+                $ref: "#/components/schemas/Hop"
+            yeast:
+              type: string
+    BeerResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tagline:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+        abv:
+          type: number
+          format: double
+        ibu:
+          type: integer
+        target_fg:
+          type: integer
+        target_og:
+          type: integer
+        volume:
+          $ref: "#/components/schemas/Volume"
+        boil_volume:
+          $ref: "#/components/schemas/Volume"
+        method:
+          type: object
+          properties:
+            mash_temp:
+              type: array
+              items:
+                $ref: "#/components/schemas/Mash"
+            fermentation:
+              type: object
+              properties:
+                temp:
+                  $ref: "#/components/schemas/Temperature"
+        ingredients:
+          type: object
+          properties:  
+            malt:
+              type: array
+              items:
+                $ref: "#/components/schemas/Malt"
+            hops:
+              type: array
+              items:
+                $ref: "#/components/schemas/Hop"
+            yeast:
+              type: string
+    BeersResponse:
+      type: object
+      properties:
+        beers:
+          type: array
+          items:
+            $ref: "#/components/schemas/BeerResponse"
+    Malt:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          $ref: "#/components/schemas/Mass"
+    Hop:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          $ref: "#/components/schemas/Mass"
+        add:
+          type: string
+    Mash:
+      type: object
+      properties:
+        temp:
+          $ref: "#/components/schemas/Temperature"
+        duration:
+          type: integer
+    Volume:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+        unit:
+          type: string
+          enum:
+            - l
+            - gal
+          default: l
+    Temperature:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+        unit:
+          type: string
+          enum:
+            - C
+            - F
+          default: C
+    Mass:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+        unit: 
+          type: string
+          enum:
+            - kg
+            - g
+            - lbs
+          default: kg
