@@ -190,14 +190,9 @@ definitions:
       - method
       - ingredients
   BeersResponse:
-    type: object
-    properties:
-      beers:
-        type: array
-        items:
-          $ref: "#/definitions/BeerResponse"
-    required:
-      - beers
+    type: array
+    items:
+      $ref: "#/definitions/BeerResponse"
   Method:
     type: object
     properties:
