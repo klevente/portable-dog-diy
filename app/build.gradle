@@ -102,8 +102,8 @@ dependencies {
 
 generateSwagger {
     platform = "kotlin-coroutines"
-    packageName = "dev.klevente.portabledogdiy"
+    packageName = "dev.klevente.portabledogdiy.data.network"
     specName = "portabledogdiy"
     inputFile = file("../docs/api.yml")
-    outputDir = file("./swagger-gen")
+    outputDir = file("./swagger-codegen")
 }

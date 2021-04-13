@@ -129,30 +129,22 @@ definitions:
       boil_volume:
         $ref: "#/definitions/Volume"
       method:
-        type: object
-        properties:
-          mash_temp:
-            type: array
-            items:
-              $ref: "#/definitions/Mash"
-          fermentation:
-            type: object
-            properties:
-              temp:
-                $ref: "#/definitions/Temperature"
+        $ref: "#/definitions/Method"
       ingredients:
-        type: object
-        properties:  
-          malt:
-            type: array
-            items:
-              $ref: "#/definitions/Malt"
-          hops:
-            type: array
-            items:
-              $ref: "#/definitions/Hop"
-          yeast:
-            type: string
+        $ref: "#/definitions/Ingredients"
+    required:
+      - name
+      - tagline
+      - description
+      - image_url
+      - abv
+      - ibu
+      - target_fg
+      - target_og
+      - volume
+      - boil_volume
+      - method
+      - ingredients
   BeerResponse:
     type: object
     properties:
@@ -180,30 +172,23 @@ definitions:
       boil_volume:
         $ref: "#/definitions/Volume"
       method:
-        type: object
-        properties:
-          mash_temp:
-            type: array
-            items:
-              $ref: "#/definitions/Mash"
-          fermentation:
-            type: object
-            properties:
-              temp:
-                $ref: "#/definitions/Temperature"
+        $ref: "#/definitions/Method"
       ingredients:
-        type: object
-        properties:  
-          malt:
-            type: array
-            items:
-              $ref: "#/definitions/Malt"
-          hops:
-            type: array
-            items:
-              $ref: "#/definitions/Hop"
-          yeast:
-            type: string
+        $ref: "#/definitions/Ingredients"
+    required:
+      - id
+      - name
+      - tagline
+      - description
+      - image_url
+      - abv
+      - ibu
+      - target_fg
+      - target_og
+      - volume
+      - boil_volume
+      - method
+      - ingredients
   BeersResponse:
     type: object
     properties:
@@ -211,6 +196,44 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/BeerResponse"
+    required:
+      - beers
+  Method:
+    type: object
+    properties:
+      mash_temp:
+        type: array
+        items:
+          $ref: "#/definitions/Mash"
+      fermentation:
+        $ref: "#/definitions/Fermentation"
+    required:
+      - mash_temp
+      - fermentation
+  Fermentation:
+    type: object
+    properties:
+      temp:
+        $ref: "#/definitions/Temperature"
+    required:
+      - temp
+  Ingredients:
+    type: object
+    properties:
+      malt:
+        type: array
+        items:
+          $ref: "#/definitions/Malt"
+      hops:
+        type: array
+        items:
+          $ref: "#/definitions/Hop"
+      yeast:
+        type: string
+    required:
+      - malt
+      - hops
+      - yeast
   Malt:
     type: object
     properties:
@@ -218,6 +241,9 @@ definitions:
         type: string
       amount:
         $ref: "#/definitions/Mass"
+    required:
+      - name
+      - amount
   Hop:
     type: object
     properties:
@@ -227,6 +253,10 @@ definitions:
         $ref: "#/definitions/Mass"
       add:
         type: string
+    required:
+      - name
+      - amount
+      - add
   Mash:
     type: object
     properties:
@@ -234,6 +264,9 @@ definitions:
         $ref: "#/definitions/Temperature"
       duration:
         type: integer
+    required:
+      - temp
+      - duration
   Volume:
     type: object
     properties:
@@ -242,10 +275,9 @@ definitions:
         format: double
       unit:
         type: string
-        enum:
-          - l
-          - gal
-        default: l
+    required:
+      - value
+      - unit
   Temperature:
     type: object
     properties:
@@ -254,10 +286,9 @@ definitions:
         format: double
       unit:
         type: string
-        enum:
-          - C
-          - F
-        default: C
+    required:
+      - value
+      - unit
   Mass:
     type: object
     properties:
@@ -266,8 +297,6 @@ definitions:
         format: double
       unit: 
         type: string
-        enum:
-          - kg
-          - g
-          - lbs
-        default: kg
+    required:
+      - value
+      - unit
