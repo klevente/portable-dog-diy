@@ -1,9 +1,17 @@
-openapi: "3.0.2"
+# openapi: "3.0.2"
+swagger: "2.0"
 info:
   title: Punk API
   version: "2.0"
-servers:
-  - url: https://api.punkapi.com/v2/
+
+host: api.punkapi.com
+basePath: /v2
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
 tags:
   - name: "beer"
     description: "Operations related to beers"
@@ -14,12 +22,12 @@ paths:
         - "beer"
       summary: "Add a new beer"
       operationId: "addBeer"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/BeerAddRequest"
+      parameters:
+        - name: beer
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/BeerAddRequest"
       responses:
         "200":
           description: "Successful addition"
@@ -33,10 +41,8 @@ paths:
       responses:
         "200":
           description: "Successful request"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BeersResponse"
+          schema:
+            $ref: "#/definitions/BeersResponse"
   /beers/{id}:
     get:
       tags:
@@ -47,15 +53,12 @@ paths:
         - name: id
           in: path
           required: true
-          schema:
-            type: integer
+          type: integer
       responses:
         "200":
           description: "Successful request"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BeerResponse"
+          schema:
+            $ref: "#/definitions/BeerResponse"
         "400":
           description: "Invalid ID format"
         "404":
@@ -69,14 +72,12 @@ paths:
         - name: id
           in: path
           required: true
+          type: integer
+        - name: beer
+          in: body
+          required: true
           schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/BeerAddRequest"
+            $ref: "#/definitions/BeerAddRequest"
       responses:
         "200":
           description: "Successful update"
@@ -93,8 +94,7 @@ paths:
         - name: id
           in: path
           required: true
-          schema:
-            type: integer
+          type: integer
       responses:
         "200":
           description: "Successful delete"
@@ -103,172 +103,171 @@ paths:
         "404":
           description: "Beer not found"
 
-components:
-  schemas:
-    BeerAddRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        tagline:
-          type: string
-        description:
-          type: string
-        image_url:
-          type: string
-        abv:
-          type: number
-          format: double
-        ibu:
-          type: integer
-        target_fg:
-          type: integer
-        target_og:
-          type: integer
-        volume:
-          $ref: "#/components/schemas/Volume"
-        boil_volume:
-          $ref: "#/components/schemas/Volume"
-        method:
-          type: object
-          properties:
-            mash_temp:
-              type: array
-              items:
-                $ref: "#/components/schemas/Mash"
-            fermentation:
-              type: object
-              properties:
-                temp:
-                  $ref: "#/components/schemas/Temperature"
-        ingredients:
-          type: object
-          properties:  
-            malt:
-              type: array
-              items:
-                $ref: "#/components/schemas/Malt"
-            hops:
-              type: array
-              items:
-                $ref: "#/components/schemas/Hop"
-            yeast:
-              type: string
-    BeerResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        tagline:
-          type: string
-        description:
-          type: string
-        image_url:
-          type: string
-        abv:
-          type: number
-          format: double
-        ibu:
-          type: integer
-        target_fg:
-          type: integer
-        target_og:
-          type: integer
-        volume:
-          $ref: "#/components/schemas/Volume"
-        boil_volume:
-          $ref: "#/components/schemas/Volume"
-        method:
-          type: object
-          properties:
-            mash_temp:
-              type: array
-              items:
-                $ref: "#/components/schemas/Mash"
-            fermentation:
-              type: object
-              properties:
-                temp:
-                  $ref: "#/components/schemas/Temperature"
-        ingredients:
-          type: object
-          properties:  
-            malt:
-              type: array
-              items:
-                $ref: "#/components/schemas/Malt"
-            hops:
-              type: array
-              items:
-                $ref: "#/components/schemas/Hop"
-            yeast:
-              type: string
-    BeersResponse:
-      type: object
-      properties:
-        beers:
-          type: array
-          items:
-            $ref: "#/components/schemas/BeerResponse"
-    Malt:
-      type: object
-      properties:
-        name:
-          type: string
-        amount:
-          $ref: "#/components/schemas/Mass"
-    Hop:
-      type: object
-      properties:
-        name:
-          type: string
-        amount:
-          $ref: "#/components/schemas/Mass"
-        add:
-          type: string
-    Mash:
-      type: object
-      properties:
-        temp:
-          $ref: "#/components/schemas/Temperature"
-        duration:
-          type: integer
-    Volume:
-      type: object
-      properties:
-        value:
-          type: number
-          format: double
-        unit:
-          type: string
-          enum:
-            - l
-            - gal
-          default: l
-    Temperature:
-      type: object
-      properties:
-        value:
-          type: number
-          format: double
-        unit:
-          type: string
-          enum:
-            - C
-            - F
-          default: C
-    Mass:
-      type: object
-      properties:
-        value:
-          type: number
-          format: double
-        unit: 
-          type: string
-          enum:
-            - kg
-            - g
-            - lbs
-          default: kg
+definitions:
+  BeerAddRequest:
+    type: object
+    properties:
+      name:
+        type: string
+      tagline:
+        type: string
+      description:
+        type: string
+      image_url:
+        type: string
+      abv:
+        type: number
+        format: double
+      ibu:
+        type: integer
+      target_fg:
+        type: integer
+      target_og:
+        type: integer
+      volume:
+        $ref: "#/definitions/Volume"
+      boil_volume:
+        $ref: "#/definitions/Volume"
+      method:
+        type: object
+        properties:
+          mash_temp:
+            type: array
+            items:
+              $ref: "#/definitions/Mash"
+          fermentation:
+            type: object
+            properties:
+              temp:
+                $ref: "#/definitions/Temperature"
+      ingredients:
+        type: object
+        properties:  
+          malt:
+            type: array
+            items:
+              $ref: "#/definitions/Malt"
+          hops:
+            type: array
+            items:
+              $ref: "#/definitions/Hop"
+          yeast:
+            type: string
+  BeerResponse:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      tagline:
+        type: string
+      description:
+        type: string
+      image_url:
+        type: string
+      abv:
+        type: number
+        format: double
+      ibu:
+        type: integer
+      target_fg:
+        type: integer
+      target_og:
+        type: integer
+      volume:
+        $ref: "#/definitions/Volume"
+      boil_volume:
+        $ref: "#/definitions/Volume"
+      method:
+        type: object
+        properties:
+          mash_temp:
+            type: array
+            items:
+              $ref: "#/definitions/Mash"
+          fermentation:
+            type: object
+            properties:
+              temp:
+                $ref: "#/definitions/Temperature"
+      ingredients:
+        type: object
+        properties:  
+          malt:
+            type: array
+            items:
+              $ref: "#/definitions/Malt"
+          hops:
+            type: array
+            items:
+              $ref: "#/definitions/Hop"
+          yeast:
+            type: string
+  BeersResponse:
+    type: object
+    properties:
+      beers:
+        type: array
+        items:
+          $ref: "#/definitions/BeerResponse"
+  Malt:
+    type: object
+    properties:
+      name:
+        type: string
+      amount:
+        $ref: "#/definitions/Mass"
+  Hop:
+    type: object
+    properties:
+      name:
+        type: string
+      amount:
+        $ref: "#/definitions/Mass"
+      add:
+        type: string
+  Mash:
+    type: object
+    properties:
+      temp:
+        $ref: "#/definitions/Temperature"
+      duration:
+        type: integer
+  Volume:
+    type: object
+    properties:
+      value:
+        type: number
+        format: double
+      unit:
+        type: string
+        enum:
+          - l
+          - gal
+        default: l
+  Temperature:
+    type: object
+    properties:
+      value:
+        type: number
+        format: double
+      unit:
+        type: string
+        enum:
+          - C
+          - F
+        default: C
+  Mass:
+    type: object
+    properties:
+      value:
+        type: number
+        format: double
+      unit: 
+        type: string
+        enum:
+          - kg
+          - g
+          - lbs
+        default: kg
