@@ -14,7 +14,7 @@ import javax.inject.Singleton
         ApplicationModule::class,
         ViewModelModule::class,
         NetworkModule::class,
-        DiskModule::class
+        DiskModule::class,
     ]
 )
 interface AppComponent : RainbowCakeComponent

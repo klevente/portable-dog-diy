@@ -1,10 +1,10 @@
 package dev.klevente.portabledogdiy.data.network
 
-import dev.klevente.portabledogdiy.data.network.model.*
+import dev.klevente.portabledogdiy.data.network.models.*
+import dev.klevente.portabledogdiy.data.toMassUnit
+import dev.klevente.portabledogdiy.data.toTemperatureUnit
+import dev.klevente.portabledogdiy.data.toVolumeUnit
 import dev.klevente.portabledogdiy.domain.Beer
-import dev.klevente.portabledogdiy.domain.MassUnit
-import dev.klevente.portabledogdiy.domain.TemperatureUnit
-import dev.klevente.portabledogdiy.domain.VolumeUnit
 
 fun BeerResponse.toDomain() = Beer(
     id = id,
@@ -55,22 +55,3 @@ fun Hop.toDomain() = dev.klevente.portabledogdiy.domain.Hop(
     amount = amount.toDomain(),
     add = add
 )
-
-fun String.toMassUnit() = when(this) {
-    "kilograms" -> MassUnit.KG
-    "grams" -> MassUnit.G
-    "pounds" -> MassUnit.LBS
-    else -> throw IllegalArgumentException("String not valid mass unit!")
-}
-
-fun String.toTemperatureUnit() = when(this) {
-    "celsius" -> TemperatureUnit.C
-    "fahrenheit" -> TemperatureUnit.F
-    else -> throw IllegalArgumentException("String not valid temperature unit!")
-}
-
-fun String.toVolumeUnit() = when(this) {
-    "litres" -> VolumeUnit.L
-    "gallons" -> VolumeUnit.GAL
-    else -> throw IllegalArgumentException("String not valid volume unit!")
-}

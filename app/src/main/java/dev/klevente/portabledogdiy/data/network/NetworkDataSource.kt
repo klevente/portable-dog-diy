@@ -1,6 +1,6 @@
 package dev.klevente.portabledogdiy.data.network
 
-import dev.klevente.portabledogdiy.data.network.model.BeerResponse
+import dev.klevente.portabledogdiy.data.network.models.BeerResponse
 import dev.klevente.portabledogdiy.domain.Beer
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,8 +21,8 @@ class NetworkDataSource @Inject constructor(
         punkApi.addBeer(beer.toRequest())
     }
 
-    suspend fun updateBeer(id: Int, beer: Beer) {
-        punkApi.updateBeer(id, beer.toRequest())
+    suspend fun updateBeer(beer: Beer) {
+        punkApi.updateBeer(beer.id, beer.toRequest())
     }
 
     suspend fun deleteBeer(id: Int) {

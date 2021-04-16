@@ -4,7 +4,7 @@
  * More info on this tool is available on https://github.com/Yelp/swagger-gradle-codegen
  */
 
-package dev.klevente.portabledogdiy.data.network.model
+package dev.klevente.portabledogdiy.data.network.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

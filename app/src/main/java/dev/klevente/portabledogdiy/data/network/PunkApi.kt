@@ -7,9 +7,9 @@
 
 package dev.klevente.portabledogdiy.data.network
 
-import dev.klevente.portabledogdiy.data.network.model.BeerAddRequest
-import dev.klevente.portabledogdiy.data.network.model.BeerResponse
-import dev.klevente.portabledogdiy.data.network.model.BeersResponse
+import dev.klevente.portabledogdiy.data.network.models.BeerAddRequest
+import dev.klevente.portabledogdiy.data.network.models.BeerResponse
+import dev.klevente.portabledogdiy.data.network.models.BeersResponse
 import retrofit2.http.*
 
 @JvmSuppressWildcards

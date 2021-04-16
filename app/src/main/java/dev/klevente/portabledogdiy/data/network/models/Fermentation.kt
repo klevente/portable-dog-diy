@@ -4,17 +4,15 @@
  * More info on this tool is available on https://github.com/Yelp/swagger-gradle-codegen
  */
 
-package dev.klevente.portabledogdiy.data.network.model
+package dev.klevente.portabledogdiy.data.network.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * @property name
- * @property amount
+ * @property temp
  */
 @JsonClass(generateAdapter = true)
-data class Malt(
-    @Json(name = "name") @field:Json(name = "name") var name: String,
-    @Json(name = "amount") @field:Json(name = "amount") var amount: Mass
+data class Fermentation(
+    @Json(name = "temp") @field:Json(name = "temp") var temp: Temperature
 )

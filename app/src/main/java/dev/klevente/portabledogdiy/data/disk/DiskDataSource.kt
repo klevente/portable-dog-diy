@@ -1,5 +1,7 @@
 package dev.klevente.portabledogdiy.data.disk
 
+import dev.klevente.portabledogdiy.data.disk.entities.RoomBeer
+import dev.klevente.portabledogdiy.domain.Beer
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -7,24 +9,13 @@ import javax.inject.Singleton
 class DiskDataSource @Inject constructor(
     private val beerDao: BeerDao,
 ) {
+    suspend fun getBeers() = beerDao.getAllBeers().map(RoomBeer::toBeer)
 
-    suspend fun getBeers() {
-        TODO("Not yet implemented")
-    }
+    suspend fun getBeerById(id: Int) = beerDao.getBeerById(id)?.let(RoomBeer::toBeer)
 
-    suspend fun getBeerById() {
-        TODO("Not yet implemented")
-    }
+    suspend fun addBeers(vararg beer: Beer) = beerDao.addBeer(*beer.map(Beer::toRoomBeer).toTypedArray())
 
-    suspend fun addBeer() {
-        TODO("Not yet implemented")
-    }
+    suspend fun updateBeer(beer: Beer) = beerDao.addBeer(beer.toRoomBeer())
 
-    suspend fun updateBeer() {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun deleteBeer() {
-        TODO("Not yet implemented")
-    }
+    suspend fun deleteBeer(id: Int) = beerDao.deleteBeer(id)
 }
