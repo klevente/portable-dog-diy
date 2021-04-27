@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Portable Dog DIY</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="application_logo">Application logo</string>
+    <string name="created_by">Created by: Levente Krizsán</string>
+    <string name="neptun_code">HELLNQ</string>
+    <string name="version">v1.0</string>
+    <string name="all_rights_reserved">All Rights Reserved</string>
+    <string name="year">2021 ©</string>
+    <string name="beer_thumbnail_image">Beer thumbnail image</string>
+    <string name="failed_to_load_beers">Failed to load beers.\n Please check your connection.</string>
+    <string name="retry">Retry</string>
+    <string name="add_new_beer">Add new beer</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="malts">Malts</string>
+    <string name="hops">Hops</string>
+    <string name="instructions">Instructions</string>
+    <string name="mash">Mash</string>
+    <string name="fermentation">Fermentation: 19 °C</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
