@@ -25,8 +25,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/normalGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="beerList, fabAddBeer" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newsList"
+        android:id="@+id/beerList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -46,8 +52,8 @@
         android:layout_marginBottom="42dp"
         android:contentDescription="@string/add_new_beer"
         android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="@+id/newsList"
-        app:layout_constraintEnd_toEndOf="@+id/newsList" />
+        app:layout_constraintBottom_toBottomOf="@+id/beerList"
+        app:layout_constraintEnd_toEndOf="@+id/beerList" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/errorGroup"
@@ -75,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/retry"
-        app:layout_constraintBottom_toBottomOf="@+id/newsList"
+        app:layout_constraintBottom_toBottomOf="@+id/beerList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/errorText" />

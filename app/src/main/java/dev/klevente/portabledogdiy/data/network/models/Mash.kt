@@ -16,5 +16,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Mash(
     @Json(name = "temp") @field:Json(name = "temp") var temp: Temperature,
-    @Json(name = "duration") @field:Json(name = "duration") var duration: Int
+    @Json(name = "duration") @field:Json(name = "duration") var duration: Int?
 )

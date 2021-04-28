@@ -13,6 +13,7 @@ class DiskModule {
     @Singleton
     fun provideRoomDatabase(context: Context): BeerDatabase = Room
         .databaseBuilder(context, BeerDatabase::class.java, "beer.db")
+        .fallbackToDestructiveMigration()
         .build()
 
     @Provides

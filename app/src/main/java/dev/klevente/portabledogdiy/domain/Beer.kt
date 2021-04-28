@@ -1,16 +1,16 @@
 package dev.klevente.portabledogdiy.domain
 
 // default image: https://images.punkapi.com/v2/keg.png
-class Beer(
+data class Beer(
     val id: Int,
     val name: String,
     val tagline: String,
     val description: String,
     val imageUrl: String,
     val abv: Double,
-    val ibu: Int,
-    val targetFg: Int,
-    val targetOg: Int,
+    val ibu: Double,
+    val targetFg: Double,
+    val targetOg: Double,
     val volume: Volume,
     val boilVolume: Volume,
     val mash: List<Mash>,

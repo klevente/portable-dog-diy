@@ -39,7 +39,7 @@ class BeerInteractor @Inject constructor(
         networkDataSource.updateBeer(beer)
     }
 
-    suspend fun deleteBeer(beer: Beer) {
-        networkDataSource.deleteBeer(beer.id)
+    suspend fun deleteBeer(id: Int) {
+        networkDataSource.deleteBeer(id)
     }
 }

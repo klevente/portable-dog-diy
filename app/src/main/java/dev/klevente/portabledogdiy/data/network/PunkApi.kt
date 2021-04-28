@@ -8,7 +8,6 @@
 package dev.klevente.portabledogdiy.data.network
 
 import dev.klevente.portabledogdiy.data.network.models.BeerAddRequest
-import dev.klevente.portabledogdiy.data.network.models.BeerResponse
 import dev.klevente.portabledogdiy.data.network.models.BeersResponse
 import retrofit2.http.*
 
@@ -52,7 +51,7 @@ interface PunkApi {
     @GET("beers/{id}")
     suspend fun getBeerById(
         @retrofit2.http.Path("id") id: Int
-    ): BeerResponse
+    ): BeersResponse
     /**
      * Get all beers
      * The endpoint is owned by portabledogdiy service owner

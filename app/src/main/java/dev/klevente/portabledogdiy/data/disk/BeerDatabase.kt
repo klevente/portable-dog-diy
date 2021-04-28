@@ -7,7 +7,7 @@ import dev.klevente.portabledogdiy.data.disk.entities.RoomBeer
 
 @Database(
     entities = [RoomBeer::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(JsonTypeConverter::class)

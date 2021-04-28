@@ -13,7 +13,7 @@ fun BeerResponse.toDomain() = Beer(
     description = description,
     imageUrl = imageUrl,
     abv = abv,
-    ibu = ibu,
+    ibu = ibu ?: 0.0,
     targetFg = targetFg,
     targetOg = targetOg,
     volume = volume.toDomain(),
@@ -42,7 +42,7 @@ fun Volume.toDomain() = dev.klevente.portabledogdiy.domain.Volume(
 
 fun Mash.toDomain() = dev.klevente.portabledogdiy.domain.Mash(
     temperature = temp.toDomain(),
-    duration = duration
+    duration = duration ?: 0
 )
 
 fun Malt.toDomain() = dev.klevente.portabledogdiy.domain.Malt(

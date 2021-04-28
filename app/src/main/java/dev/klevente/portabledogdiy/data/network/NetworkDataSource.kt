@@ -14,7 +14,7 @@ class NetworkDataSource @Inject constructor(
     }
 
     suspend fun getBeerById(id: Int): Beer {
-        return punkApi.getBeerById(id).toDomain()
+        return punkApi.getBeerById(id).first().toDomain()
     }
 
     suspend fun addBeer(beer: Beer) {

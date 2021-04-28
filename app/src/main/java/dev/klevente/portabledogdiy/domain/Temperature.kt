@@ -1,10 +1,12 @@
 package dev.klevente.portabledogdiy.domain
 
-class Temperature(
-    val value: Double,
-    val unit: TemperatureUnit
+data class Temperature(
+    var value: Double,
+    var unit: TemperatureUnit
 )
 
-enum class TemperatureUnit(val unit: String) {
-    C("celsius"), F("fahrenheit");
+enum class TemperatureUnit(val unit: String, val abbreviation: String) {
+    C("celsius", "°C"), F("fahrenheit", "°F");
+
+    override fun toString() = abbreviation
 }

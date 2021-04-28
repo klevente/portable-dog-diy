@@ -1,10 +1,13 @@
 package dev.klevente.portabledogdiy.domain
 
-class Volume(
-    val value: Double,
-    val unit: VolumeUnit
+data class Volume(
+    var value: Double,
+    var unit: VolumeUnit
 )
 
-enum class VolumeUnit(val unit: String) {
-    L("litres"), GAL("gallons")
+enum class VolumeUnit(val unit: String, val abbreviation: String) {
+    L("litres", "l"), GAL("gallons", "gal");
+
+
+    override fun toString() = abbreviation
 }

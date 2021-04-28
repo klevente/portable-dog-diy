@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="mash"
+            type="dev.klevente.portabledogdiy.ui.edit.EditPresenter.EditMash" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMashTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_weight="4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMashTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/duration"
+                android:text="@={mash.duration}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMashTemperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_weight="2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMashTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/temperature"
+                android:text="@={mash.temperatureQuantity}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spMashUnit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/unit"
+            android:layout_gravity="center"
+            android:selectedItemPosition="@={mash.temperatureUnitOrdinal}"/>
+
+        <Button
+            android:id="@+id/btnDeleteMash"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:icon="@drawable/ic_baseline_delete_outline_24"
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly" />
+
+    </LinearLayout>
+</layout>

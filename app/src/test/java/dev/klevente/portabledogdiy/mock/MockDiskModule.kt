@@ -2,6 +2,7 @@ package dev.klevente.portabledogdiy.mock
 
 import dagger.Module
 import dagger.Provides
+import dev.klevente.portabledogdiy.data.disk.BeerDao
 import javax.inject.Singleton
 
 @Module
@@ -15,5 +16,5 @@ class MockDiskModule {
 
     @Provides
     @Singleton
-    fun provideBeerDao() = MockBeerDao()
+    fun provideBeerDao(): BeerDao = MockBeerDao()
 }
