@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "776286732555",
+    "project_id": "portable-dog-diy",
+    "storage_bucket": "portable-dog-diy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776286732555:android:3da79c60cdb5f632bc220e",
+        "android_client_info": {
+          "package_name": "dev.klevente.portabledogdiy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776286732555-3uic3nut2firhtiq17tgn264d32p4viv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK9bxj3TdsiIQB8G50huYDAhKlktpJaL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776286732555-3uic3nut2firhtiq17tgn264d32p4viv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

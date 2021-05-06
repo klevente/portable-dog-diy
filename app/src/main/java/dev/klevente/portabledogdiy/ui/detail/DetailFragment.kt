@@ -10,6 +10,10 @@ import co.zsmb.rainbowcake.navigation.extensions.applyArgs
 import co.zsmb.rainbowcake.navigation.extensions.requireInt
 import co.zsmb.rainbowcake.navigation.navigator
 import com.bumptech.glide.Glide
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import dev.klevente.portabledogdiy.R
 import dev.klevente.portabledogdiy.ui.detail.DetailViewModel.DeleteFailedEvent
 import dev.klevente.portabledogdiy.ui.detail.DetailViewModel.LoadFailedEvent
@@ -41,6 +45,8 @@ class DetailFragment : RainbowCakeFragment<DetailViewState, DetailViewModel>() {
     private lateinit var hopAdapter: HopAdapter
     private lateinit var mashAdapter: MashAdapter
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -48,6 +54,9 @@ class DetailFragment : RainbowCakeFragment<DetailViewState, DetailViewModel>() {
 
         btnDelete.setOnClickListener {
             viewModel.deleteBeer(beerId)
+            firebaseAnalytics.logEvent("delete_beer") {
+                param("beer_id", id.toString())
+            }
         }
 
         btnEdit.setOnClickListener {
@@ -62,6 +71,13 @@ class DetailFragment : RainbowCakeFragment<DetailViewState, DetailViewModel>() {
         rvMash.adapter = mashAdapter
 
         initToolbar(toolbar)
+
+        firebaseAnalytics = Firebase.analytics
+
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, toolbar.title.toString())
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, "DetailFragment")
+        }
     }
 
     private fun initArgs() {

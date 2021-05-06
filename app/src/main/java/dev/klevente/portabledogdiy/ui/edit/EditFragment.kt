@@ -158,6 +158,7 @@ class EditFragment : RainbowCakeFragment<EditViewState, EditViewModel>() {
             }
             AddFailedEvent -> {
                 snackbar(R.string.add_failed)
+                throw RuntimeException("Failed to add new beer")
             }
             UpdateFailedEvent -> {
                 snackbar(R.string.update_failed)
